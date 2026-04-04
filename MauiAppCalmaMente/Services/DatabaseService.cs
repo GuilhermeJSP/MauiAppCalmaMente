@@ -1,5 +1,5 @@
-﻿using MauiAppCalmaMente.Models;
-using SQLite;
+﻿using SQLite;
+using MauiAppCalmaMente.Models;
 
 namespace MauiAppCalmaMente.Services;
 
@@ -19,4 +19,6 @@ public class DatabaseService
 
     public Task<int> SalvarDiario(Diario diario) => _db.InsertAsync(diario);
     public Task<List<Diario>> GetDiarios() => _db.Table<Diario>().ToListAsync();
+
+    public Task<int> DeletarDiario(int id) => _db.DeleteAsync<Diario>(id);
 }

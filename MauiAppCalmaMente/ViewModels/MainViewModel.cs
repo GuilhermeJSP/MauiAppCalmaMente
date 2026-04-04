@@ -1,5 +1,5 @@
-﻿using MauiAppCalmaMente.Models;
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
+using MauiAppCalmaMente.Models;
 
 namespace MauiAppCalmaMente.ViewModels;
 
@@ -33,5 +33,10 @@ public class MainViewModel
         var d = new Diario { Data = DateTime.Now, Texto = texto };
         await App.Database.SalvarDiario(d);
         Diarios.Add(d);
+    }
+
+    public async Task DeleteDiario(int id)
+    {
+        await App.Database.DeletarDiario(id);
     }
 }

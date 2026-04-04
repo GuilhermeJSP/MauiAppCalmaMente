@@ -2,9 +2,30 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiAppCalmaMente.Views.DiarioPage">
 
-    <VerticalStackLayout Padding="20">
-        <Editor x:Name="texto" HeightRequest="150" />
-        <Button Text="Salvar" Clicked="OnSalvar" />
+    <VerticalStackLayout Padding="20" Spacing="10">
+
+        <Editor x:Name="texto" HeightRequest="100" Placeholder="Escreva seu dia..." />
+
+        <Button Text="Salvar" Clicked="OnSalvar"/>
+
+        <Label Text="Histórico" FontSize="20"/>
+
+        <CollectionView x:Name="listaDiario">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Padding="10" Margin="5">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Data}" FontSize="12"/>
+                            <Label Text="{Binding Texto}" FontSize="16"/>
+                            <Button Text="Apagar"
+                                    CommandParameter="{Binding Id}"
+                                    Clicked="OnApagar"/>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
     </VerticalStackLayout>
 
 </ContentPage>

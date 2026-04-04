@@ -3,8 +3,12 @@
              x:Class="MauiAppCalmaMente.Views.HumorPage">
 
     <VerticalStackLayout Padding="20">
-        <Button Text="Feliz" Clicked="OnFeliz" />
-        <Button Text="Triste" Clicked="OnTriste" />
+
+        <Button Text="Feliz 😊" Clicked="OnFeliz"/>
+        <Button Text="Triste 😢" Clicked="OnTriste"/>
+
+        <GraphicsView x:Name="grafico" HeightRequest="200"/>
+
     </VerticalStackLayout>
 
 </ContentPage>
