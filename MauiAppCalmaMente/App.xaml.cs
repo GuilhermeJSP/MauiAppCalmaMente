@@ -1,11 +1,12 @@
 ﻿using Microsoft.Maui.Controls;
 using MauiAppCalmaMente.Services;
+using MauiAppCalmaMente.Views;
 
 namespace MauiAppCalmaMente;
 
 public partial class App : Application
 {
-    public static DatabaseService Database { get; private set; }
+    public static DatabaseService? Database { get; private set; }
 
     public App()
     {
@@ -14,6 +15,6 @@ public partial class App : Application
         string dbPath = Path.Combine(FileSystem.AppDataDirectory, "calmamente.db");
         Database = new DatabaseService(dbPath);
 
-        MainPage = new AppShell();
+        MainPage = new NavigationPage(new InicioPage());
     }
 }

@@ -4,7 +4,7 @@
        x:Class="MauiAppCalmaMente.AppShell">
 
     <TabBar>
-        <ShellContent Title="Home" ContentTemplate="{DataTemplate views:HomePage}" />
+        <ShellContent Title="Respire" ContentTemplate="{DataTemplate views:RespirePage}" />
         <ShellContent Title="Humor" ContentTemplate="{DataTemplate views:HumorPage}" />
         <ShellContent Title="Diário" ContentTemplate="{DataTemplate views:DiarioPage}" />
     </TabBar>

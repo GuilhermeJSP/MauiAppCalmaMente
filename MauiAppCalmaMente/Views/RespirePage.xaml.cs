@@ -1,16 +1,12 @@
-using Microsoft.Maui.Controls;
-
 namespace MauiAppCalmaMente.Views;
 
-public partial class HomePage : ContentPage
+public partial class RespirePage : ContentPage
 {
     bool animando = false;
-
-    public HomePage()
-    {
-        InitializeComponent();
-    }
-
+	public RespirePage()
+	{
+		InitializeComponent();
+	}
     private async void OnRespirar(object sender, EventArgs e)
     {
         if (animando) return;
@@ -25,6 +21,6 @@ public partial class HomePage : ContentPage
 
     private async void OnEmergencia(object sender, EventArgs e)
     {
-        await DisplayAlert("Respire", "Pare. Respire fundo. VocÃª estÃ¡ seguro.", "OK");
+        await DisplayAlert("Respire", "Pare. Respire fundo. Você está seguro.", "OK");
     }
 }
