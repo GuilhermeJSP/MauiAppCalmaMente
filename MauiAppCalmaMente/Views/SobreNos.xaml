@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppCalmaMente.Views.SobreNosPage"
+             BackgroundColor="#036658">
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="16">
+
+            <!-- Título -->
+            <Label Text="🧘 CalmaMente"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,40,0,5"/>
+
+            <Label Text="Sobre Nós"
+                   FontSize="18"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20"/>
+
+            <!-- Card: Nossa História -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="16"
+                   Padding="20"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="💡 Nossa Ideia"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="purple"/>
+                    <Label FontSize="14"
+                           TextColor="#444444"
+                           LineBreakMode="WordWrap"
+                           Text="O CalmaMente nasceu da vontade de ajudar pessoas que enfrentam a ansiedade no dia a dia. Sabemos que o ritmo da vida moderna pode ser desafiador, e acreditamos que pequenas práticas diárias podem fazer uma grande diferença no bem-estar mental."/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Card: Quando foi criado -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="16"
+                   Padding="20"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="📅 Quando Surgiu"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="purple"/>
+                    <Label FontSize="14"
+                           TextColor="#444444"
+                           LineBreakMode="WordWrap"
+                           Text="O aplicativo foi criado em 2025 como projeto de Trabalho de Conclusão de Curso (TCC) de um curso técnico. Desenvolvido com dedicação e carinho, o CalmaMente representa não apenas um projeto acadêmico, mas um desejo genuíno de impactar positivamente a vida das pessoas."/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Card: Objetivo -->
+            <Frame BackgroundColor="White"
+                   CornerRadius="16"
+                   Padding="20"
+                   HasShadow="True">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="🎯 Nosso Objetivo"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="purple"/>
+                    <Label FontSize="14"
+                           TextColor="#444444"
+                           LineBreakMode="WordWrap"
+                           Text="Nosso objetivo é oferecer ferramentas simples e acessíveis para auxiliar no controle da ansiedade, como o diário emocional, registro de humor e exercícios de respiração. Queremos ser um companheiro discreto e confiável na jornada de saúde mental de cada usuário."/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Card: Mensagem final -->
+            <Frame BackgroundColor="purple"
+                   CornerRadius="16"
+                   Padding="20"
+                   HasShadow="True"
+                   Margin="0,0,0,30">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="💙 Nossa Mensagem"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="White"/>
+                    <Label FontSize="14"
+                           TextColor="White"
+                           LineBreakMode="WordWrap"
+                           Text="Cuidar da saúde mental é um ato de coragem. Esperamos que o CalmaMente seja um passo na direção de dias mais leves e tranquilos. Você não está sozinho nessa jornada. 🌿"/>
+                </VerticalStackLayout>
+            </Frame>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
