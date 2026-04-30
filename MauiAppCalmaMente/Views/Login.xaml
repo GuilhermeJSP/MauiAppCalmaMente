@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppCalmaMente.Views.Login"
+             Background="#3FC6B3">
+
+    <ScrollView>
+        <VerticalStackLayout>
+            <VerticalStackLayout Padding="20" Spacing="16" VerticalOptions="Center">
+
+                <!-- Título -->
+                <Label Text="CalmaMente"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,40,0,10"/>
+
+                <Label Text="Bem-vindo de volta!"
+                   FontSize="16"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,0,0,20"/>
+
+                <!-- Card de Login -->
+                <Frame BackgroundColor="White"
+                   CornerRadius="16"
+                   Padding="20"
+                   HasShadow="True">
+                    <VerticalStackLayout Spacing="12">
+
+                        <Label Text="Usuário"
+                           FontSize="14"
+                           TextColor="Black"/>
+                        <Entry x:Name="entryUsuario"
+                           Placeholder="Digite seu usuário"
+                           BackgroundColor="Black"
+                           ReturnType="Next"/>
+
+                        <BoxView HeightRequest="1" Color="Purple"/>
+
+                        <Label Text="Senha"
+                           FontSize="14"
+                           TextColor="Black"/>
+                        <Entry x:Name="entrySenha"
+                           Placeholder="Digite sua senha"
+                           IsPassword="True"
+                           BackgroundColor="Black"
+                           ReturnType="Done"/>
+
+                        <BoxView HeightRequest="1" Color="purple"/>
+
+                        <Button Text="🔐 Entrar"
+                            BackgroundColor="purple"
+                            TextColor="White"
+                            CornerRadius="10"
+                            Margin="0,10,0,0"
+                            Clicked="OnEntrar"/>
+
+                        <Button Text="Criar conta"
+                        BackgroundColor="Transparent"
+                        TextColor="Black"
+                        Clicked="OnCadastrar"/>
+
+                    </VerticalStackLayout>
+                </Frame>
+
+                <!-- Rodapé -->
+                <Label Text="Sua jornada de bem-estar começa aqui 💙"
+                   FontSize="13"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0,20,0,0"/>
+
+            </VerticalStackLayout>
+        </VerticalStackLayout>
+    </ScrollView>
+    
+</ContentPage>
