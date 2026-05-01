@@ -1,79 +1,231 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiAppCalmaMente.Views.Login"
-             Background="#3FC6B3">
+             x:Class="MauiAppCalmaMente.Views.InicioPage"
+             BackgroundColor="#3FC6B3">
 
-    <ScrollView>
-        <VerticalStackLayout>
-            <VerticalStackLayout Padding="20" Spacing="16" VerticalOptions="Center">
+    <Grid RowDefinitions="*, Auto">
 
-                <!-- Título -->
-                <Label Text="CalmaMente"
-                   FontSize="32"
+        <!-- Conteúdo principal -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="16">
+
+                <!-- Saudação -->
+                <Label x:Name="lblSaudacao"
+                   Text="Olá Usuário!"
+                   FontSize="30"
                    FontAttributes="Bold"
                    TextColor="White"
                    HorizontalOptions="Center"
-                   Margin="0,40,0,10"/>
+                   Margin="0,30,0,0"/>
 
-                <Label Text="Bem-vindo de volta!"
-                   FontSize="16"
-                   TextColor="White"
-                   HorizontalOptions="Center"
-                   Margin="0,0,0,20"/>
+                <Label Text="Como você se sente hoje?"
+                       FontSize="16"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       Margin="0,0,0,10"/>
 
-                <!-- Card de Login -->
+                <!-- Emojis de humor -->
                 <Frame BackgroundColor="White"
-                   CornerRadius="16"
-                   Padding="20"
-                   HasShadow="True">
-                    <VerticalStackLayout Spacing="12">
+                       CornerRadius="16"
+                       Padding="15"
+                       HasShadow="True">
+                    <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="10">
 
-                        <Label Text="Usuário"
-                           FontSize="14"
-                           TextColor="Black"/>
-                        <Entry x:Name="entryUsuario"
-                           Placeholder="Digite seu usuário"
-                           BackgroundColor="Black"
-                           ReturnType="Next"/>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Button Text="😄"
+                                    FontSize="32"
+                                    BackgroundColor="Transparent"
+                                    Padding="0"
+                                    CommandParameter="Muito bem"
+                                    Clicked="OnHumorClicked"/>
+                            <Label Text="Muito bem"
+                                   FontSize="10"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
 
-                        <BoxView HeightRequest="1" Color="Purple"/>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Button Text="🙂"
+                                    FontSize="32"
+                                    BackgroundColor="Transparent"
+                                    Padding="0"
+                                    CommandParameter="Bem"
+                                    Clicked="OnHumorClicked"/>
+                            <Label Text="Bem"
+                                   FontSize="10"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
 
-                        <Label Text="Senha"
-                           FontSize="14"
-                           TextColor="Black"/>
-                        <Entry x:Name="entrySenha"
-                           Placeholder="Digite sua senha"
-                           IsPassword="True"
-                           BackgroundColor="Black"
-                           ReturnType="Done"/>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Button Text="😐"
+                                    FontSize="32"
+                                    BackgroundColor="Transparent"
+                                    Padding="0"
+                                    CommandParameter="Neutro"
+                                    Clicked="OnHumorClicked"/>
+                            <Label Text="Neutro"
+                                   FontSize="10"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
 
-                        <BoxView HeightRequest="1" Color="purple"/>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Button Text="😟"
+                                    FontSize="32"
+                                    BackgroundColor="Transparent"
+                                    Padding="0"
+                                    CommandParameter="Mal"
+                                    Clicked="OnHumorClicked"/>
+                            <Label Text="Mal"
+                                   FontSize="10"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
 
-                        <Button Text="🔐 Entrar"
-                            BackgroundColor="purple"
-                            TextColor="White"
-                            CornerRadius="10"
-                            Margin="0,10,0,0"
-                            Clicked="OnEntrar"/>
+                        <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                            <Button Text="😣"
+                                    FontSize="32"
+                                    BackgroundColor="Transparent"
+                                    Padding="0"
+                                    CommandParameter="Muito mal"
+                                    Clicked="OnHumorClicked"/>
+                            <Label Text="Muito mal"
+                                   FontSize="10"
+                                   TextColor="Gray"
+                                   HorizontalOptions="Center"/>
+                        </VerticalStackLayout>
 
-                        <Button Text="Criar conta"
-                        BackgroundColor="Transparent"
-                        TextColor="Black"
-                        Clicked="OnCadastrar"/>
+                    </HorizontalStackLayout>
+                </Frame>
+
+                <!-- Título Registros -->
+                <Frame BackgroundColor="White"
+                       CornerRadius="16"
+                       Padding="15"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+
+                        <Label Text="Registros"
+                               FontSize="20"
+                               FontAttributes="Bold"
+                               TextColor="#036658"
+                               HorizontalOptions="Center"/>
+                        <Button Text="🗑️ Limpar Tudo"
+                                Grid.Column="1"
+                                BackgroundColor="#c0392b"
+                                TextColor="White"
+                                CornerRadius="8"
+                                FontSize="12"
+                                Padding="8,4"
+                                Clicked="OnLimparTudo"/>    
+
+                        <CollectionView x:Name="listaHumor">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <VerticalStackLayout Padding="5,8" Spacing="2">
+                                        <Grid ColumnDefinitions="*, Auto, Auto">
+                                            <VerticalStackLayout Grid.Column="0">
+                                                <Label Text="{Binding Rotulo}"
+                               FontSize="16"
+                               FontAttributes="Bold"
+                               TextColor="#222222"/>
+                                                <Label Text="{Binding Data, StringFormat='{0:dd/MM/yyyy}'}"
+                               FontSize="12"
+                               TextColor="Gray"/>
+                                            </VerticalStackLayout>
+                                            <Label Grid.Column="1"
+                           Text="{Binding Emoji}"
+                           FontSize="28"
+                           VerticalOptions="Center"
+                           Margin="0,0,10,0"/>
+                                            <Button Grid.Column="2"
+                            Text="🗑️"
+                            FontSize="18"
+                            BackgroundColor="Transparent"
+                            TextColor="#c0392b"
+                            Padding="0"
+                            CommandParameter="{Binding Id}"
+                            Clicked="OnApagarHumor"
+                            VerticalOptions="Center"/>
+                                        </Grid>
+                                        <BoxView HeightRequest="1"
+                         Color="#EEEEEE"
+                         Margin="0,6,0,0"/>
+                                    </VerticalStackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
 
                     </VerticalStackLayout>
                 </Frame>
 
-                <!-- Rodapé -->
-                <Label Text="Sua jornada de bem-estar começa aqui 💙"
-                   FontSize="13"
-                   TextColor="White"
-                   HorizontalOptions="Center"
-                   Margin="0,20,0,0"/>
-
             </VerticalStackLayout>
-        </VerticalStackLayout>
-    </ScrollView>
-    
+        </ScrollView>
+
+        <!-- Barra de navegação inferior FIXA -->
+        <Frame Grid.Row="1"
+               BackgroundColor="#3FC6B3"
+               Padding="10,8"
+               CornerRadius="0"
+               HasShadow="True">
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="40">
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="🏠"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnInicioClicked"/>
+                    <Label Text="Inicio"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="📓"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnDiarioClicked"/>
+                    <Label Text="Diário"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="🌬️"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnRespiraClicked"/>
+                    <Label Text="Respira"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="ℹ️"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnSobreNosClicked"/>
+                    <Label Text="Sobre Nós"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+        </Frame>
+
+    </Grid>
 </ContentPage>
