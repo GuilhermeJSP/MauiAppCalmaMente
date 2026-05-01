@@ -56,10 +56,4 @@ public partial class RespirePage : ContentPage
         await circulo.ScaleTo(1, 300); // Retorna o círculo ao tamanho original suavemente
     }
 
-    // Navega para a tela Sobre Nós
-    private async void OnSobreNosClicked(object sender, EventArgs e)
-    {
-        animando = false; // Para a animação antes de navegar
-        await Navigation.PushAsync(new SobreNosPage());
-    }
 }
