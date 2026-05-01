@@ -1,27 +1,99 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiAppCalmaMente.Views.RespirePage">
+             x:Class="MauiAppCalmaMente.Views.RespirePage"
+             BackgroundColor="#3FC6B3">
 
-    <VerticalStackLayout Padding="20" Spacing="20">
+    <Grid RowDefinitions="*, Auto">
 
-        <Label Text="CalmaMente" FontSize="28" HorizontalOptions="Center"/>
+        <!-- Conteúdo principal -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="20" VerticalOptions="Center">
 
-        <Button Text="Respiração Guiada" Clicked="OnRespirar"/>
+                <Label Text="CalmaMente"
+                       FontSize="32"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"
+                       Margin="0,40,0,10"/>
 
-        <Button Text="🚨 Emergência"
-                BackgroundColor="Red"
-                TextColor="White"
-                Clicked="OnEmergencia"/>
+                <Button Text="Respiração Guiada"
+                        BackgroundColor="#7B61FF"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Clicked="OnRespirar"/>
 
-        <Grid HeightRequest="200" HorizontalOptions="Center">
-            <BoxView x:Name="circulo"
-                     WidthRequest="100"
-                     HeightRequest="100"
-                     CornerRadius="50"
-                     BackgroundColor="LightBlue"/>
-        </Grid>
+                <Button Text="🚨 Acionar Emergencial"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Clicked="OnEmergencia"/>
 
-    </VerticalStackLayout>
+                <!-- Círculo de respiração -->
+                <Grid HeightRequest="220"
+                      HorizontalOptions="Center"
+                      VerticalOptions="Center">
+                    <BoxView x:Name="circulo"
+                             WidthRequest="120"
+                             HeightRequest="120"
+                             CornerRadius="60"
+                             BackgroundColor="#A8DADC"
+                             HorizontalOptions="Center"
+                             VerticalOptions="Center"/>
+                </Grid>
 
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Barra de navegação inferior -->
+        <Frame Grid.Row="1"
+               BackgroundColor="#3FC6B3"
+               Padding="10,8"
+               CornerRadius="0"
+               HasShadow="false">
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="40">
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="🏠"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnInicioClicked"/>
+                    <Label Text="Inicio"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="📓"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnDiarioClicked"/>
+                    <Label Text="Diário"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="🌬️"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnRespiraClicked"/>
+                    <Label Text="Respira"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+        </Frame>
+
+    </Grid>
 </ContentPage>
