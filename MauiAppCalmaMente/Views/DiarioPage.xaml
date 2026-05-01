@@ -1,81 +1,136 @@
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MauiAppCalmaMente.Views.DiarioPage">
+             x:Class="MauiAppCalmaMente.Views.DiarioPage"
+             BackgroundColor="#3FC6B3">
 
-<ScrollView>
-    <VerticalStackLayout Padding="20" Spacing="16">
+    <Grid RowDefinitions="*, Auto">
 
-        <!-- Título da Página -->
-        <Label Text="📓 Meu Diário"
-               FontSize="26"
-               FontAttributes="Bold"
-               TextColor="White"
-               HorizontalOptions="Center"/>
+        <!-- Conteúdo principal -->
+        <ScrollView Grid.Row="0">
+            <VerticalStackLayout Padding="20" Spacing="16">
 
-        <!-- Card de escrita -->
-        <Frame BackgroundColor="White"
-               CornerRadius="16"
-               Padding="15"
-               HasShadow="True">
-            <VerticalStackLayout Spacing="10">
-                <Editor x:Name="texto"
-                        HeightRequest="120"
-                        Placeholder="Escreva seu dia..."
-                        BackgroundColor="Black"/>
-                <Button Text="💾 Salvar"
-                        BackgroundColor="purple"
-                        TextColor="White"
-                        CornerRadius="10"
-                        Clicked="OnSalvar"/>
+                <Label Text="📓 Meu Diário"
+                       FontSize="26"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       HorizontalOptions="Center"/>
+
+                <Frame BackgroundColor="black"
+                       CornerRadius="16"
+                       Padding="15"
+                       HasShadow="True">
+                    <VerticalStackLayout Spacing="10">
+                        <Editor x:Name="texto"
+                                HeightRequest="120"
+                                Placeholder="Escreva seu dia..."
+                                BackgroundColor="Transparent"/>
+                        <Button Text="💾 Salvar"
+                                BackgroundColor="purple"
+                                TextColor="White"
+                                CornerRadius="10"
+                                Clicked="OnSalvar"/>
+                    </VerticalStackLayout>
+                </Frame>
+
+                <Label Text="📋 Histórico"
+                       FontSize="20"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       Margin="0,10,0,0"/>
+
+                <CollectionView x:Name="listaDiario">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Frame BackgroundColor="White"
+                                   CornerRadius="14"
+                                   Padding="15"
+                                   Margin="0,5"
+                                   HasShadow="True">
+                                <VerticalStackLayout Spacing="8">
+                                    <Label Text="{Binding Data}"
+                                           FontSize="12"
+                                           TextColor="Gray"/>
+                                    <Label Text="{Binding Texto}"
+                                           FontSize="15"
+                                           TextColor="#222222"/>
+                                    <HorizontalStackLayout Spacing="10">
+                                        <Button Text="🗑️ Apagar"
+                                                BackgroundColor="#c0392b"
+                                                TextColor="White"
+                                                CornerRadius="8"
+                                                HorizontalOptions="FillAndExpand"
+                                                CommandParameter="{Binding Id}"
+                                                Clicked="OnApagar"/>
+                                        <Button Text="✏️ Editar"
+                                                BackgroundColor="purple"
+                                                TextColor="White"
+                                                CornerRadius="8"
+                                                HorizontalOptions="FillAndExpand"
+                                                CommandParameter="{Binding Id}"
+                                                Clicked="OnEditar"/>
+                                    </HorizontalStackLayout>
+                                </VerticalStackLayout>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
             </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Barra de navegação inferior FIXA -->
+        <Frame Grid.Row="1"
+               BackgroundColor="#3FC6B3"
+               Padding="10,8"
+               CornerRadius="0"
+               HasShadow="True">
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="40">
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="🏠"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnInicioClicked"/>
+                    <Label Text="Inicio"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="📓"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnDiarioClicked"/>
+                    <Label Text="Diário"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="🌬️"
+                            FontSize="22"
+                            BackgroundColor="Transparent"
+                            TextColor="White"
+                            Padding="0"
+                            Clicked="OnRespiraClicked"/>
+                    <Label Text="Respira"
+                           TextColor="White"
+                           FontSize="11"
+                           HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+
+
+            </HorizontalStackLayout>
         </Frame>
 
-        <!-- Título do histórico -->
-        <Label Text="📋 Histórico"
-               FontSize="20"
-               FontAttributes="Bold"
-               TextColor="White"
-               Margin="0,10,0,0"/>
-
-        <!-- Lista de entradas -->
-        <CollectionView x:Name="listaDiario">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BackgroundColor="White"
-                           CornerRadius="14"
-                           Padding="15"
-                           Margin="0,5"
-                           HasShadow="True">
-                        <VerticalStackLayout Spacing="8">
-                            <Label Text="{Binding Data}"
-                                   FontSize="12"
-                                   TextColor="Black"/>
-                            <Label Text="{Binding Texto}"
-                                   FontSize="15"
-                                   TextColor="#222222"/>
-                            <HorizontalStackLayout Spacing="10">
-                                <Button Text="🗑️ Apagar"
-                                        BackgroundColor="#c0392b"
-                                        TextColor="White"
-                                        CornerRadius="8"
-                                        HorizontalOptions="FillAndExpand"
-                                        CommandParameter="{Binding Id}"
-                                        Clicked="OnApagar"/>
-                                <Button Text="✏️ Editar"
-                                        BackgroundColor="purple"
-                                        TextColor="White"
-                                        CornerRadius="8"
-                                        HorizontalOptions="FillAndExpand"
-                                        CommandParameter="{Binding Id}"
-                                        Clicked="OnEditar"/>
-                            </HorizontalStackLayout>
-                        </VerticalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-    </VerticalStackLayout>
-</ScrollView>
+    </Grid>
 
 </ContentPage>
