@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using MauiAppCalmaMente.Models;
 
 namespace MauiAppCalmaMente.ViewModels;
@@ -38,5 +38,15 @@ public class MainViewModel
     public async Task DeleteDiario(int id)
     {
         await App.Database.DeletarDiario(id);
+    }
+
+    public async Task EditarDiario(int id, string novoTexto)
+    {
+        var diario = Diarios.FirstOrDefault(d => d.Id == id);
+        if (diario != null)
+        {
+            diario.Texto = novoTexto;
+            await App.Database.EditarDiario(diario); // chamada ao banco
+        }
     }
 }
