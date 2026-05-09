@@ -15,6 +15,6 @@ public partial class App : Application
         string dbPath = Path.Combine(FileSystem.AppDataDirectory, "calmamente.db");
         Database = new DatabaseService(dbPath);
 
-        MainPage = new NavigationPage(new InicioPage());
+        MainPage = new NavigationPage(new Login());
     }
 }
