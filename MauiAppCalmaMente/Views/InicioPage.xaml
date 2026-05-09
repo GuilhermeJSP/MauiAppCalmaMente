@@ -177,8 +177,7 @@
                             FontSize="22"
                             BackgroundColor="Transparent"
                             TextColor="White"
-                            Padding="0"
-                            Clicked="OnInicioClicked"/>
+                            Padding="0"/>
                     <Label Text="Inicio"
                            TextColor="White"
                            FontSize="11"
