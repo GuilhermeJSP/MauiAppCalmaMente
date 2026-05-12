@@ -1,6 +1,4 @@
-﻿using Foundation;
-
-namespace MauiAppCalmaMente
+﻿namespace MauiAppCalmaMente
 {
     [Register("AppDelegate")]
     public class AppDelegate : MauiUIApplicationDelegate

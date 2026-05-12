@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiAppCalmaMente.Views.ConteudosPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#036A5B">
+    
+    <Grid RowDefinitions="*, *, Auto">
+
+        <!-- Conteúdo principal -->
+        <VerticalStackLayout Padding="20" Spacing="20" Grid.Row="0">
+
+            <!-- Conteúdo por fora -->
+            <Label Text="🧘 CalmaMente"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0, 0, 0, 0"/>
+            <Label Text="▶️"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0, -10, 0, 0"/>
+            <Label Text="Vídeos para relaxar"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   HorizontalOptions="Center"
+                   Margin="0, -20, 0, 0"/>
+            <Label Text="Escolha um vídeo para relaxar sua mente e cuidar de você."
+                   FontSize="16"
+                   TextColor="White"
+                   HorizontalTextAlignment="Center"
+                   HorizontalOptions="Center"
+                   Margin="0, -20, 0, 0"/>
+        </VerticalStackLayout>
+
+        <ScrollView Grid.Row="1" Margin="0, -150, 0, 0">
+
+            <!-- Conteúdo por dentro -->
+            <VerticalStackLayout>
+                <Frame Margin="0"
+                       Padding="10"
+                       CornerRadius="20"
+                       BackgroundColor="White"
+                       HeightRequest="800">
+
+            <CollectionView ItemsSource="{Binding Videos}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+
+                    <Frame Margin="0"
+                           Padding="10"
+                           CornerRadius="15"
+                           BorderColor="#DDDDDD">
+                    
+                    <!--Clique do card-->
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer
+                            Tapped="VideoTapped"
+                            CommandParameter="{Binding .}" />
+                    </Frame.GestureRecognizers>
+
+                        <Grid ColumnDefinitions="120,*">
+
+                            <!-- Imagem -->
+                            <Frame Padding="0"
+                                   CornerRadius="15"
+                                   IsClippedToBounds="True"
+                                   HasShadow="False"
+                                   WidthRequest="120"
+                                   HeightRequest="90">
+
+                                <Image Source="{Binding Imagem}"
+                                       Aspect="AspectFill"/>
+                            </Frame>
+
+                            <!-- Informações -->
+                            <VerticalStackLayout Grid.Column="1" Padding="10,0" Spacing="3">
+
+                                <Label Text="{Binding Titulo}" FontSize="20" FontAttributes="Bold"/>
+
+                                <Label Text="{Binding Duracao}" FontSize="14" TextColor="Gray"/>
+
+                                <Label Text="{Binding Descricao}" FontSize="14"/>
+                            </VerticalStackLayout>
+
+                        </Grid>
+
+                    </Frame>
+
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+            </Frame>
+            </VerticalStackLayout>
+            </ScrollView>
+
+
+            <!-- Barra de navegação inferior -->
+        <Frame Grid.Row="2"
+           BackgroundColor="#3FC6B3"
+           Padding="10,8"
+           CornerRadius="0"
+           HasShadow="false">
+            <HorizontalStackLayout HorizontalOptions="CenterAndExpand" Spacing="40">
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="🏠"
+                        FontSize="22"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Padding="0"
+                        Clicked="OnInicioClicked"/>
+                    <Label Text="Inicio"
+                       TextColor="White"
+                       FontSize="11"
+                       HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="📓"
+                        FontSize="22"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Padding="0"
+                        Clicked="OnDiarioClicked"/>
+                    <Label Text="Diário"
+                       TextColor="White"
+                       FontSize="11"
+                       HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <VerticalStackLayout HorizontalOptions="Center" Spacing="4">
+                    <Button Text="🌬️"
+                        FontSize="22"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        Padding="0"
+                        Clicked="OnRespiraClicked"/>
+                    <Label Text="Respira"
+                       TextColor="White"
+                       FontSize="11"
+                       HorizontalOptions="Center"/>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+        </Frame>
+
+    </Grid>
+</ContentPage>

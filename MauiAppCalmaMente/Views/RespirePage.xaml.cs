@@ -28,6 +28,11 @@ public partial class RespirePage : ContentPage
             await circulo.ScaleTo(1, 4000);   // Expira: contrai em 4 segundos
         }
     }
+    // Navega para a tela de conteudos
+    private async void OnConteudos(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new ConteudosPage());
+    }
 
     // Exibe mensagem de apoio ao clicar no botão de emergência
     private async void OnEmergencia(object sender, EventArgs e)

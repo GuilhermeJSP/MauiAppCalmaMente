@@ -10,7 +10,7 @@ public partial class CadastroPage : ContentPage
     }
 
     private async void OnCadastrar(object sender, EventArgs e)
-     //Evento que conultara os valores preenchidos e cadastrará no banco de dados
+    //Evento que conultara os valores preenchidos e cadastrará no banco de dados
     {
         string usuario = entryUsuario.Text;
         string senha = entrySenha.Text;
@@ -19,7 +19,7 @@ public partial class CadastroPage : ContentPage
 
         //Condições que verificarão os campos vazios e retornarão uma mensagem de acordo com
         // o preenchimento dos campos. 
-        
+
         if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(senha) || string.IsNullOrWhiteSpace(confirmar))
         {
             await DisplayAlert("Atenção", "Preencha todos os campos!", "OK");

@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
-namespace MauiAppCalmaMente;
+﻿namespace MauiAppCalmaMente;
 
 public partial class AppShell : Shell
 {

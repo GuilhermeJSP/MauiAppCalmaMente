@@ -1,5 +1,5 @@
-using System.Collections.ObjectModel;
 using MauiAppCalmaMente.Models;
+using System.Collections.ObjectModel;
 
 namespace MauiAppCalmaMente.ViewModels;
 

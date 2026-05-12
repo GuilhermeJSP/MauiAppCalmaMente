@@ -1,7 +1,4 @@
-﻿using ObjCRuntime;
-using UIKit;
-
-namespace MauiAppCalmaMente
+﻿namespace MauiAppCalmaMente
 {
     public class Program
     {

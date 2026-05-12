@@ -23,6 +23,12 @@
                         CornerRadius="10"
                         Clicked="OnRespirar"/>
 
+                <Button Text="Vídeos para relaxar"
+                        BackgroundColor="#4C58AA"
+                        TextColor="White"
+                        CornerRadius="10"
+                        Clicked="OnConteudos"/>
+
                 <Button Text="🚨 Acionar Emergencial"
                         BackgroundColor="Red"
                         TextColor="White"

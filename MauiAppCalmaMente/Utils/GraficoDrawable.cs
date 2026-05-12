@@ -1,6 +1,4 @@
 ﻿using MauiAppCalmaMente.ViewModels;
-using Microsoft.Maui.Graphics;
-using System.Linq;
 
 namespace MauiAppCalmaMente.Utils;
 

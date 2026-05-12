@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using MauiAppCalmaMente.Services;
+﻿using MauiAppCalmaMente.Services;
 using MauiAppCalmaMente.Views;
 
 namespace MauiAppCalmaMente;
